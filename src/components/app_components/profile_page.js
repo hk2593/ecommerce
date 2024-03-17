@@ -77,7 +77,7 @@ const Profile = () => {
       {
         role=='Seller' && <div className='flex flex-col gap-4'>
         <h1 className='font-bold text-3xl'>My Products</h1> 
-        {products.map((product)=>(<div>
+        {products.map((product)=>(<div key={product._id}>
           <div className='flex flex-wrap flex-row gap-4 items-center'>
     <div className='rounded-full overflow-hidden h-16 w-16 bg-white'>
         <img className='object-contain h-full w-full' src={product.Image.secure_url} alt="Product Image" />
