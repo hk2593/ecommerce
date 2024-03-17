@@ -20,7 +20,7 @@ const Myorders = () => {
 
   return (
     <div>
-    {myorders.map((order)=><div>
+    {myorders.map((order)=><div key={order._id}>
       <div>
     <div className='flex flex-wrap flex-row items-center gap-4'>
         <h1 className="text-lg">Items: {order.Items.length}</h1>
