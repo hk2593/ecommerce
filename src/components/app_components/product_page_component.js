@@ -16,9 +16,9 @@ const Product_page_component = ({id}) => {
     console.log(product)
     const AddtoCart=async()=>{
       console.log('yeh aaya mai idhar')
-        const result=await axios.post('http://localhost:3000/api/cart',{userId,productId})
+        const result=await axios.post(`${process.env.API_URL}/api/cart`,{userId,productId})
         console.log(result)
-        const cart_items=await axios.post('http://localhost:3000/api/cart/user_cart',{userId})
+        const cart_items=await axios.post(`${process.env.API_URL}/api/cart/user_cart`,{userId})
         dispatch(setCartItems(cart_items.data.cart_items?.Items))
     }
     

@@ -29,7 +29,7 @@ const SearchComponent = ({params}) => {
                   setSearchResults([]);
                }
                else{
-               const result=await axios.post('http://localhost:3000/api/searchRoute',{data});
+               const result=await axios.post(`${process.env.API_URL}/api/searchRoute`,{data});
                  setSearchResults(result.data.products);
                }
                

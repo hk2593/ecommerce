@@ -48,8 +48,8 @@ const Cart_component = ({iscartopen,setiscartopen}) => {
   const token=useSelector((state)=>state.auth.token);
   const handleQuantity=async({Quantity,cart_id})=>{
       
-      const updateQuantity=await axios.post('http://localhost:3000/api/cart/update_cart',{userId,Quantity,cart_id});
-      const cart_items=await axios.post('http://localhost:3000/api/cart/user_cart',{userId})
+      const updateQuantity=await axios.post(`${process.env.API_URL}/api/cart/update_cart`,{userId,Quantity,cart_id});
+      const cart_items=await axios.post(`${process.env.API_URL}/api/cart/user_cart`,{userId})
       if(token){
       dispatch(setCartItems(cart_items.data.cart_items?.Items));}
       else{
@@ -57,8 +57,8 @@ const Cart_component = ({iscartopen,setiscartopen}) => {
       }
   }
   const handleDeleteItem=async({cart_id})=>{
-    const updatecart=await axios.post('http://localhost:3000/api/cart/delete_cart',{userId,cart_id});
-    const cart_items=await axios.post('http://localhost:3000/api/cart/user_cart',{userId})
+    const updatecart=await axios.post(`${process.env.API_URL}/api/cart/delete_cart`,{userId,cart_id});
+    const cart_items=await axios.post(`${process.env.API_URL}/api/cart/user_cart`,{userId})
     if(token){
       dispatch(setCartItems(cart_items.data.cart_items?.Items));}
       else{
@@ -68,14 +68,14 @@ const Cart_component = ({iscartopen,setiscartopen}) => {
 
   const handleSubmitAddress=async(e)=>{
     e.preventDefault();
-    const result=await axios.post('http://localhost:3000/api/orders/create_order',
+    const result=await axios.post(`${process.env.API_URL}/api/orders/create_order`,
               {userId,formData,TotalPrice:price,Items:arr}
               );
     console.log(result);
     if(result.status==200){
-      const deletedcart=await axios.post('http://localhost:3000/api/cart/delete_user_cart',{userId});
-      const cart_items=await axios.post('http://localhost:3000/api/cart/user_cart',{userId});
-      const orders=await axios.get('http://localhost:3000/api/orders');
+      const deletedcart=await axios.post(`${process.env.API_URL}/api/cart/delete_user_cart`,{userId});
+      const cart_items=await axios.post(`${process.env.API_URL}/api/cart/user_cart`,{userId});
+      const orders=await axios.get(`${process.env.API_URL}/api/orders`);
       dispatch(setAllorders(orders.data.allorders))
       console.log(cart_items);
       dispatch(setCartItems(cart_items.data.cart_items?.Items))

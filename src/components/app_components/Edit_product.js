@@ -32,11 +32,11 @@ const Edit_product = ({ product,editbtn,seteditbtn }) => {
   
     const handleSubmit = async (e) => {
       e.preventDefault();
-      const response = await axios.post('http://localhost:3000/api/products/edit_products', details);
+      const response = await axios.post(`${process.env.API_URL}/api/products/edit_products`, details);
       console.log(response)
       if (response.status === 200) {
         const getallproducts = async () => {
-          const products = await axios.get('http://localhost:3000/api/products')
+          const products = await axios.get(`${process.env.API_URL}/api/products`)
           dispatch(setProducts(products.data.data))
         }
         getallproducts();

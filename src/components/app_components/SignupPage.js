@@ -13,7 +13,7 @@ const SignupPage = () => {
   const router=useRouter(); 
   const handleSubmit = async (e) => {
     e.preventDefault(); 
-    const response=await axios.post("http://localhost:3000/api/auth/signup",
+    const response=await axios.post(`${process.env.API_URL}/api/auth/signup`,
       details,
     ) 
      router.push('/login');     

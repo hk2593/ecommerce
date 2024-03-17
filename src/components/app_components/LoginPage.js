@@ -14,7 +14,7 @@ const LoginPage = () => {
   const router=useRouter(); 
   const handleSubmit = async (e) => {
     e.preventDefault(); 
-    const response=await axios.post("http://localhost:3000/api/auth/login",
+    const response=await axios.post(`${process.env.API_URL}/api/auth/login`,
       details,
     ) 
     
@@ -22,9 +22,9 @@ const LoginPage = () => {
     if(response.data.token){
     const getallproducts=async()=>{
     
-    const products=await axios.get('http://localhost:3000/api/products')
-    const cart_items=await axios.post('http://localhost:3000/api/cart/user_cart',{userId})
-    const orders=await axios.get('http://localhost:3000/api/orders')
+    const products=await axios.get(`${process.env.API_URL}/api/products`)
+    const cart_items=await axios.post(`${process.env.API_URL}/api/cart/user_cart`,{userId})
+    const orders=await axios.get(`${process.env.API_URL}/api/orders`)
     
      if(!orders.data.allorders){
       dispatch(setAllorders([]))

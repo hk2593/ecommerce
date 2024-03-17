@@ -35,7 +35,7 @@ const Navbar = () => {
          setSearchResults([]);
       }
       else{
-      const result=await axios.post('http://localhost:3000/api/searchRoute',{data});
+      const result=await axios.post(`${process.env.API_URL}/api/searchRoute`,{data});
         setSearchResults(result.data.products);
       }
       
@@ -46,7 +46,7 @@ const Navbar = () => {
 
    
     const handlelogout=async()=>{
-      const response=await axios.post('http://localhost:3000/api/auth/logout');
+      const response=await axios.post(`${process.env.API_URL}/api/auth/logout`);
       console.log(response);
       dispatch(setLogout())
       dispatch(setCartItems([]))

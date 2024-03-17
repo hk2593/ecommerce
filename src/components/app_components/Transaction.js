@@ -22,9 +22,9 @@ const Transaction = () => {
   };
 
   const handleCompleted=async({orderId})=>{
-      const response=await axios.post('http://localhost:3000/api/orders/update_status',{orderId});
+      const response=await axios.post(`${process.env.API_URL}/api/orders/update_status`,{orderId});
       if(response.status==200){
-        const orders=await axios.get('http://localhost:3000/api/orders');
+        const orders=await axios.get(`${process.env.API_URL}/api/orders`);
         dispatch(setAllorders(orders.data.allorders))
       }
   }
