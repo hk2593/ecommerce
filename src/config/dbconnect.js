@@ -1,7 +1,8 @@
 import mongoose from "mongoose";
+require("dotenv").config
 export default async function dbconnect(){
 
-    await mongoose.connect("mongodb+srv://sunilkumar47260:onamiWU1JUN9SZny@cluster0.giviwl5.mongodb.net/Ecommerce").then(
+    await mongoose.connect(process.env.MONGODB_URI).then(
         console.log("mongodb connected succefully")
     )
 }
