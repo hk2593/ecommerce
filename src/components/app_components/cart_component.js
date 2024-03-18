@@ -89,7 +89,7 @@ const Cart_component = ({iscartopen,setiscartopen}) => {
      <div className='fixed inset-0 flex flex-col gap-4 justify-center items-center z-50 bg-black bg-opacity-50'>
        <div className='bg-white flex flex-col gap-2 p-4 rounded-lg'>
         {
-          cart_items.length==0 && <div>
+          cart_items?.length==0 && <div>
              <img src='/shopping.png' className=' h-40 w-40'></img>
             </div>
         }
